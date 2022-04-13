@@ -1,11 +1,10 @@
-
-class card {
-    constructor(name, team, race, description){
+class Card {
+    constructor(name, cname, team, race){
         this.name = name;
+        this.cname = cname;
         this.team = team;
         this.race = race;
-        this.description=description;
-        this.send = 'You are ' + name + ".\n" + description;
+        this.text = 'You are ' + name + " " + cname + ".\n https://wiki.bloodontheclocktower.com/Trouble_Brewing";
     }
 }
 
