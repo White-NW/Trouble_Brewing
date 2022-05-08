@@ -1,8 +1,5 @@
 const cards = require("./card")
 
-function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
-}
 
 class game{
 
@@ -10,7 +7,7 @@ class game{
     this.people = parseInt(people);
     this.townsfolkcount = [0,0,0,0,0,3,3,5,5,5,7,7,7,9,9,9];
     this.outsidercount = [0,0,0,0,0,0,1,0,1,2,0,1,2,0,1,2];
-    this.minioncount = [0,0,0,0,0,1,1,2,1,1,2,2,2,3,3,3];
+    this.minioncount = [0,0,0,0,0,1,1,1,1,1,2,2,2,3,3,3];
     this.demoncount = [0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1];
     this.arr = [];
     }
@@ -55,14 +52,18 @@ class game{
         }
         for(i = 0; i < this.outsidercount[this.people]; ++i){
             var r = cards.outsiders[temparr[i]];
+            if (r.name === 'Drunk'){
+                r.drunkname = cards.townsfolk[this.townsfolkcount[this.people]].name;
+                r.drunkcname = cards.townsfolk[this.townsfolkcount[this.people]].cname;
+            }
             this.arr.push(r);
         }
+
         if (this.people >= 5){
             var r = cards.demons[0];
             this.arr.push(r);
         }
-        this.arr.push(cards.god);
-        shuffle(this.arr);
+        this.arr.push(cards.god[0]);
         //console.log(arr);
         //message.member.voice.channel.members.each(member=>{
         //member.send('1');

@@ -1,13 +1,19 @@
 class Card {
     constructor(name, cname, team, race){
         this.name = name;
+        this.drunkname = '';
         this.cname = cname;
+        this.drunkcname = '';
         this.team = team;
         this.race = race;
         this.text = 'You are ' + name + " " + cname + ".\n https://wiki.bloodontheclocktower.com/Trouble_Brewing";
     }
-    gettext(){
+    gettext()
+    {
+        if (this.drunkname === '')
         return this.text;
+        else
+        return 'You are ' + this.drunkname + " " + this.drunkcname + ".\n https://wiki.bloodontheclocktower.com/Trouble_Brewing"
     }
 }
 
@@ -59,5 +65,5 @@ class Demon extends Card {
 var imp = new Card('Imp', '小恶魔', 'Demon', 'Evil');
 exports.demons = [imp];
 
-var observer = new Card('Observer','说书人','0','0')
+var observer = new Card('Observer','说书人','Demon','Demon');
 exports.god = [observer];
