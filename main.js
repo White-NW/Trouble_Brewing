@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
 var game = require('./generate.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
-const TOKEN = require('./token.js');
+require("dotenv").config();
+
+var token = process.env.CLIENT_TOKEN;
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
@@ -107,4 +109,4 @@ client.on('messageCreate', (message) => {
     }
 })
 
-client.login(TOKEN);
+client.login(token);
